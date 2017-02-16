@@ -9,11 +9,14 @@
       </button>
       <a class="navbar-brand" href="/">Jungle</a>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
+
       <ul class="nav navbar-nav">
         <li>
           <%= link_to 'Home', :root %>
         </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             Categories
@@ -26,6 +29,25 @@
           </ul>
         </li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+    <li>
+      <% if current_user %>
+        <li class = "navbar-text">
+          Signed in as <%= current_user.name %>
+        </li>
+        <li>
+          <%= link_to "Logout", '/logout' %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to 'Login', '/login' %>
+        </li>
+        <li>
+          <%= link_to 'Signup', '/signup' %>
+        </li>
+      <% end %>
+    </li>
+  </ul>
       <ul class="nav navbar-nav navbar-right">
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -47,4 +69,5 @@
       </ul>
     </div>
   </div>
+
 </nav>
