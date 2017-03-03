@@ -46,6 +46,8 @@ class OrdersController < ApplicationController
     cart.each do |product_id, details|
       if product = Product.find_by(id: product_id)
         quantity = details['quantity'].to_i
+         product.quantity -= quantity
+         product.save
         order.line_items.new(
           product: product,
           quantity: quantity,
